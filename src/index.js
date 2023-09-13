@@ -39,13 +39,50 @@ window.addEventListener('load', (event) => {
   });
 
   // Add all the divs to the HTML
+
+
   document.querySelector('#memory-board').innerHTML = html;
 
   // Bind the click event of each element to a function
+
+
   document.querySelectorAll('.card').forEach((card) => {
     card.addEventListener('click', () => {
       // TODO: write some code here
+
+      card.classList.toggle("turned");
+
+      if (memoryGame.pickedCards.length < 2) {
+        memoryGame.pickedCards.push(card);
+        console.log(memoryGame.pickedCards.length);
+      }
+
+      if (memoryGame.pickedCards.length === 2) {
+        let firstCard = memoryGame.pickedCards[0];
+        let secondCard = memoryGame.pickedCards[1];
+
+        memoryGame.pickedCards = []
+      
+
+  
+      if (firstCard.getAttribute("data-card-name") ===
+          second.getAttribute("data-card-name"))
+       {
+
+         firstCard.classList.add("blocked");
+         secondCard.classList.add("blocked");
+        }
+      
+        else {
+          setTimeout(() => {
+            firstCard.classList.remove("turned");
+            secondCard.classList.remove("turned");
+          }, 1000);
+        }
+
       console.log(`Card clicked: ${card}`);
-    });
-  });
-});
+
+      }
+     });
+   });
+ });
